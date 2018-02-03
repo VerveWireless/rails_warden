@@ -97,12 +97,8 @@ else
         if defined? ::ActionController::API
           ::ActionController::API.class_eval do
             include RailsWarden::Mixins::HelperMethods
-
-            if defined? helper
-              helper RailsWarden::Mixins::ControllerOnlyMethods
-            else
-              include RailsWarden::Mixins::ControllerOnlyMethods
-            end
+            include RailsWarden::Mixins::ControllerOnlyMethods
+            helper RailsWarden::Mixins::ControllerOnlyMethods if defined? helper
           end
         end
       end
